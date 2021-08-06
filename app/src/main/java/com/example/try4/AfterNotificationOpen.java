@@ -19,6 +19,8 @@ public class AfterNotificationOpen extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        Intent serviceIntent = new Intent(this, ExampleService.class);
+        stopService(serviceIntent);
 
         PackageManager packageManager = getPackageManager();
         ComponentName componentName = new ComponentName(AfterNotificationOpen.this,AfterNotificationOpen.class);
@@ -27,8 +29,7 @@ public class AfterNotificationOpen extends AppCompatActivity {
 
         Toast.makeText(AfterNotificationOpen.this,"Application Unhide!",Toast.LENGTH_LONG).show();
 
-        Intent serviceIntent = new Intent(this, ExampleService.class);
-        stopService(serviceIntent);
+
     }
 
     @Override
@@ -49,15 +50,9 @@ public class AfterNotificationOpen extends AppCompatActivity {
 
                 Toast.makeText(AfterNotificationOpen.this,"Application Hidden!",Toast.LENGTH_LONG).show();
                 Count = 0;
-                return true;
             }
 
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public boolean onKeyMultiple(int keyCode, int repeatCount, KeyEvent event) {
-        return super.onKeyMultiple(keyCode, repeatCount, event);
     }
 }
